@@ -1,6 +1,8 @@
 package com.example.springbootfcm;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,20 @@ import com.google.firebase.messaging.Notification;
 
 @Service
 public class FCMServiceImpl implements FCMService {
+	
+	
+	final List<FCMRegisterModel> users = new ArrayList<>(); 
+	
+	@Override
+	public String register(FCMRegisterModel model) {
+		users.add(model);
+		return "success";
+	}
+	
+	@Override
+	public List<FCMRegisterModel> getAllUsers() {
+		return users;
+	}
 
 	@Override
 	public String sendToOne(FCMModel model) {
